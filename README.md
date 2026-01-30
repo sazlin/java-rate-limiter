@@ -2,8 +2,7 @@
 
 A small, configurable, thread-safe Java rate-limiter library for multi-user services.
 
-[![Build Status](https://img.shields.io/badge/build-__placeholder__-blue)](https://github.com/<owner>/<repo>/actions)
-[![Javadocs](https://img.shields.io/badge/api-javadoc-lightgrey)](https://github.com/<owner>/<repo>/docs)
+[![Build Status](https://img.shields.io/badge/build-0.0.1-blue)](https://github.com/<owner>/<repo>/actions)
 [![License: MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](./LICENSE)
 
 ## Key features
@@ -15,17 +14,18 @@ A small, configurable, thread-safe Java rate-limiter library for multi-user serv
 
 ## Usage
 ```java
+import com.seanazlin.utils.ratelimiter.RateLimiter;
 import com.seanazlin.utils.ratelimiter.FixedWindowRateLimiter;
 import com.seanazlin.utils.ratelimiter.SlidingWindowRateLimiter;
 import java.time.Clock;
 import java.time.temporal.ChronoUnit;
 
 // Fixed window: 100 requests per minute
-FixedWindowRateLimiter fixedLimiter = new FixedWindowRateLimiter(100, ChronoUnit.MINUTES, Clock.systemUTC());
+RateLimiter fixedLimiter = new FixedWindowRateLimiter(100, ChronoUnit.MINUTES, Clock.systemUTC());
 boolean allowed = fixedLimiter.tryAcquire("user-123");
 
 // Sliding window: 60 requests per minute
-SlidingWindowRateLimiter slidingLimiter = new SlidingWindowRateLimiter(60, ChronoUnit.MINUTES, Clock.systemUTC());
+RateLimiter slidingLimiter = new SlidingWindowRateLimiter(60, ChronoUnit.MINUTES, Clock.systemUTC());
 boolean allowed2 = slidingLimiter.tryAcquire("user-123");
 ```
 
@@ -52,9 +52,6 @@ boolean allowed2 = slidingLimiter.tryAcquire("user-123");
 ./gradlew run
 ```
 
-License
+## License
 - This repository is licensed under the MIT License. See `LICENSE` for details.
-
-Acknowledgements
-- Built by the author. Uses SLF4J for logging.
 
